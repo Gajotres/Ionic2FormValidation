@@ -1,0 +1,28 @@
+<ion-navbar *navbar>
+    <ion-title>
+        Authorization
+    </ion-title>
+</ion-navbar>
+
+<ion-content class="home" padding>
+    <form [ngFormModel]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        <ion-input floating-label [class.error]="!username.valid && username.touched">
+            <ion-label>Username</ion-label>
+            <input type="text" value="" [ngFormControl]="username">          
+        </ion-input>
+        <div *ngIf="username.hasError('required') && username.touched"  
+            class="error-box">* Username is required</div>
+        <div *ngIf="username.hasError('minLengthValidator') && username.touched"  
+            class="error-box">* Minimum length is 8</div>                       
+        <ion-input floating-label [class.error]="!password.valid && password.touched">
+            <ion-label>Password</ion-label>
+            <input type="text" value="" [ngFormControl]="password" >
+        </ion-input>
+        <div *ngIf="password.hasError('required') && password.touched"  
+            class="error-box">* Password is required</div>          
+        <div *ngIf="password.hasError('minLengthValidator') && password.touched"  
+            class="error-box">* Minimum length is 8</div>             
+        <br/><br/> 
+        <button type="submit" class="custom-button" [disabled]="!authForm.valid" block>Submit</button>
+    </form>
+</ion-content>
