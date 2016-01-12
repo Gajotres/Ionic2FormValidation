@@ -16,8 +16,8 @@ export class FormPage {
 
 	constructor(fb: FormBuilder) {
 	   	this.authForm = fb.group({  
-	    	'username': ['', Validators.compose([Validators.required, minLengthValidator])],
-	    	'password': ['', Validators.compose([Validators.required, minLengthValidator])]
+	    	'username': ['', Validators.compose([Validators.required, Validators.minLength(8), checkFirstCharacterValidator])],
+	    	'password': ['', Validators.compose([Validators.required, Validators.minLength(8), checkFirstCharacterValidator])]
 	    });
 
 		this.username = this.authForm.controls['username'];	    
@@ -30,9 +30,9 @@ export class FormPage {
 	    }
 	} 
 
-	function minLengthValidator(control: Control): { [s: string]: boolean } {  
-		if (!control.value.match(/\w{8,}/)) {  
-			return {minLengthValidator: true};  
-		}
+	function checkFirstCharacterValidator(control: Control): { [s: string]: boolean } {  
+		if (control.value.match(/^\d/)) {  
+			return {checkFirstCharacterValidator: true};  
+		}		
 	}
 }
