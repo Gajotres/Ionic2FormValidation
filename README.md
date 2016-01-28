@@ -1,13 +1,10 @@
-## This is a Ionic 2 tutorial example made for www.gajotres.net
+### This is a Ionic 2 tutorial example made for http://www.gajotres.net/ionic-2-how-o-create-and-validate-forms
 
-1. Download this example
+Follow these instruction to deploy this example:
 
-2. Update Ionic and Cordova
-
-    npm install -g cordova ionic@beta
-
-3. Generate a blank Ionic 2 template
-
-    ionic start Ionic2FormValidation blank --v2
-
-4. Copy content of a www and app project into a newly generated project
+1. git clone https://github.com/Gajotres/Ionic2FormValidation.git
+2. cd Ionic2FormValidation
+3. ionic platform add android
+4. npm install
+5. ionic serve -> To see if everything is working as it should
+6. ionic run android -l -c -s
