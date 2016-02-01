@@ -6,20 +6,20 @@
 
 <ion-content class="home" padding>
     <form [ngFormModel]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-        <ion-input floating-label [class.error]="!username.valid && username.touched">
-            <ion-label>Username</ion-label>
-            <input type="text" value="" [ngFormControl]="username">          
-        </ion-input>
+        <ion-item [class.error]="!username.valid && username.touched">
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" value="" [ngFormControl]="username"></ion-input>         
+        </ion-item>
         <div *ngIf="username.hasError('required') && username.touched"  
             class="error-box">* Username is required!</div>
         <div *ngIf="username.hasError('minlength') && username.touched"  
             class="error-box">* Minimum username length is 8!</div>            
         <div *ngIf="username.hasError('checkFirstCharacterValidator') && username.touched"  
             class="error-box">* Username cant't start with number!</div>                       
-        <ion-input floating-label [class.error]="!password.valid && password.touched">
-            <ion-label>Password</ion-label>
-            <input type="text" value="" [ngFormControl]="password" >
-        </ion-input>
+        <ion-item floating-label [class.error]="!password.valid && password.touched">
+            <ion-label floating>Password</ion-label>
+            <ion-input type="text" value="" [ngFormControl]="password" ></ion-input>
+        </ion-item>
         <div *ngIf="password.hasError('required') && password.touched"  
             class="error-box">* Password is required</div>    
         <div *ngIf="password.hasError('minlength') && password.touched"  
