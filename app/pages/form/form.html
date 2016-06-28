@@ -1,8 +1,10 @@
-<ion-navbar *navbar>
-    <ion-title>
-        Authorization
-    </ion-title>
-</ion-navbar>
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Authorization Form Demo
+		</ion-title>
+	</ion-navbar>
+</ion-header>
 
 <ion-content class="home" padding>
     <form [ngFormModel]="authForm" (ngSubmit)="onSubmit(authForm.value)">
@@ -10,21 +12,21 @@
             <ion-label floating>Username</ion-label>
             <ion-input type="text" value="" [ngFormControl]="username"></ion-input>         
         </ion-item>
-        <div *ngIf="username.hasError('required') && username.touched"  
+        <div *ngIf="username.hasError('required') && username.touched" 
             class="error-box">* Username is required!</div>
-        <div *ngIf="username.hasError('minlength') && username.touched"  
+        <div *ngIf="username.hasError('minlength') && username.touched" 
             class="error-box">* Minimum username length is 8!</div>            
-        <div *ngIf="username.hasError('checkFirstCharacterValidator') && username.touched"  
+        <div *ngIf="username.hasError('checkFirstCharacterValidator') && username.touched" 
             class="error-box">* Username cant't start with number!</div>                       
-        <ion-item floating-label [class.error]="!password.valid && password.touched">
+        <ion-item [class.error]="!password.valid && password.touched">
             <ion-label floating>Password</ion-label>
             <ion-input type="text" value="" [ngFormControl]="password" ></ion-input>
         </ion-item>
-        <div *ngIf="password.hasError('required') && password.touched"  
+        <div *ngIf="password.hasError('required') && password.touched" 
             class="error-box">* Password is required</div>    
-        <div *ngIf="password.hasError('minlength') && password.touched"  
+        <div *ngIf="password.hasError('minlength') && password.touched" 
             class="error-box">* Minimum password length is 8!</div>                     
-        <div *ngIf="password.hasError('checkFirstCharacterValidator') && password.touched"  
+        <div *ngIf="password.hasError('checkFirstCharacterValidator') && password.touched" 
             class="error-box">* Password cant't start with number!</div>             
         <br/><br/> 
         <button type="submit" class="custom-button" [disabled]="!authForm.valid" block>Submit</button>

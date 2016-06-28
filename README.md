@@ -6,5 +6,5 @@ Follow these instruction to deploy this example:
 2. cd Ionic2FormValidation
 3. ionic platform add android
 4. npm install
-5. ionic serve -> To see if everything is working as it should
+5. ionic serve -l -c -s -> To see if everything is working as it should
 6. ionic run android -l -c -s
