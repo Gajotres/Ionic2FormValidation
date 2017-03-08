@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Authorization Form Demo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="authForm" (ngSubmit)="submitForm(authForm.value)">
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" value="" [formControl]="authForm.controls['username']" [ngClass]="{'error-border':!authForm.controls['username'].valid}"></ion-input>         
+        </ion-item><br/>
+        <div class="error-box" *ngIf="authForm.controls['username'].hasError('required') && authForm.controls['username'].touched">* Username is required!</div>
+        <div class="error-box" *ngIf="authForm.controls['username'].hasError('minlength') && authForm.controls['username'].touched">* Minimum username length is 5!</div>
+		<div class="error-box" *ngIf="authForm.controls['username'].hasError('maxlength') && authForm.controls['username'].touched">* Maximum username length is 10!</div>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="text" value="" [formControl]="authForm.controls['password']" ></ion-input>
+        </ion-item><br/>
+        <div class="error-box" *ngIf="authForm.controls['password'].hasError('required') && authForm.controls['password'].touched">* Username is required!</div>
+        <div class="error-box" *ngIf="authForm.controls['password'].hasError('minlength') && authForm.controls['password'].touched">* Minimum username length is 8!</div>
+		<div class="error-box" *ngIf="authForm.controls['password'].hasError('checkFirstCharacterValidatorOutput') && authForm.controls['password'].touched">* Password cant't start with number!</div><br/>
+		<ion-list>
+			<ion-item>
+				<ion-label>Gender</ion-label>
+				<ion-select [formControl]="authForm.controls['gender']">
+					<ion-option value="e">Elf!?</ion-option>
+					<ion-option value="f">Female</ion-option>
+					<ion-option value="m">Mele</ion-option>
+				</ion-select>
+			</ion-item>
+		</ion-list><br/>
+		
+		<button type="submit" ion-button full [disabled]="!authForm.valid">Submit</button>
+    </form>
+</ion-content>
